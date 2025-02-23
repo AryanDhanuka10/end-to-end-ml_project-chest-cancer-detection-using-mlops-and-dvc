@@ -1,0 +1,9 @@
+artifacts_root: artifacts
+
+# format of ymal files
+data_ingestion: # key
+  # naive values
+  root_dir : artifacts/data_ingestion # make artifacts folder where we need store the dataset
+  source_url : https://drive.google.com/file/d/1eJyF0daLaHgnWmT0ydhNDqykm97saYWi/view?usp=sharing  # google drive url
+  local_data_file: artifacts/data_ingestion/data.zip  #downloading....
+  unzip_dir : artifacts/data_ingestion 
