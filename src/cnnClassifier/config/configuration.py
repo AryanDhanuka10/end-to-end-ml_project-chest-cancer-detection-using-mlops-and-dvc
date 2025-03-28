@@ -1,7 +1,7 @@
 import os
 from cnnClassifier.constants import *
 from cnnClassifier.utils.common import read_yaml,create_directories
-from cnnClassifier.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig,TrainingConfig
+from cnnClassifier.entity.config_entity import DataIngestionConfig,PrepareBaseModelConfig,TrainingConfig,EvaluationConfig
 
 class ConfigurationManager:
     def __init__(
@@ -71,3 +71,14 @@ class ConfigurationManager:
         )
 
         return training_config
+
+    def get_evaluated_config(self) -> EvaluationConfig:
+            eval_config = EvaluationConfig(
+                path_of_model="/home/aryan-dhanuka/Backup/Python Data Science/AI Projects/End-To-End-ML_Project-Chest-Cancer-Detection-Using-MLOps-and-DVC/artifacts/training/model.h5",
+                training_data="/home/aryan-dhanuka/Backup/Python Data Science/AI Projects/End-To-End-ML_Project-Chest-Cancer-Detection-Using-MLOps-and-DVC/artifacts/data_ingestion/Chest-CT-Scan-data/train",
+                mlflow_url="https://dagshub.com/AryanDhanuka10/End-To-End-ML_Project-Chest-Cancer-Detection-Using-MLOps-and-DVC.mlflow/#/experiments/0?searchFilter=&orderByKey=attributes.start_time&orderByAsc=false&startTime=ALL&lifecycleFilter=Active&modelVersionFilter=All+Runs&datasetsFilter=W10%3D",
+                all_params=self.params,
+                params_image_size=self.params.IMAGE_SIZE,
+                params_batch_size=self.params.BATCH_SIZE
+            )
+            return eval_config

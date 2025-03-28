@@ -77,6 +77,11 @@ class Training:
             class_mode="categorical",
             shuffle=True
         )
+        print("Train Class Indices:", self.train_generator.class_indices)
+        print("Train Num Classes:", self.train_generator.num_classes)
+        print("Valid Class Indices:", self.valid_generator.class_indices)
+        print("Valid Num Classes:", self.valid_generator.num_classes)
+
     
     def save_model(self,path: Path, model: tf.keras.Model):
         model.save(path)
@@ -104,3 +109,4 @@ class Training:
             path=self.config.trained_model_path,
             model=self.model
         )
+        
