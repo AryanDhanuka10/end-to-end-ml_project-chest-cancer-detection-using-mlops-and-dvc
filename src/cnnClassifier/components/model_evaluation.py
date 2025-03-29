@@ -9,6 +9,12 @@ import pickle
 from cnnClassifier.entity.config_entity import EvaluationConfig
 from cnnClassifier.utils.common import save_json, read_yaml, create_directories
 
+# Set MLflow tracking URI to DagsHub
+mlflow.set_tracking_uri("https://dagshub.com/AryanDhanuka10/End-To-End-ML_Project-Chest-Cancer-Detection-Using-MLOps-and-DVC.mlflow")
+
+# Ensure authentication is set for DagsHub
+os.environ["MLFLOW_TRACKING_USERNAME"] = "AryanDhanuka10"
+os.environ["MLFLOW_TRACKING_PASSWORD"] = "e83049708341d244ec2c9f994ec79046028731de"
 
 
 
