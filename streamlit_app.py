@@ -34,9 +34,9 @@ def predict_image(img):
     return CLASS_LABELS[result]
 
 # Streamlit UI
-st.set_page_config(page_title="Lung Cancer Prediction", layout="centered")
+st.set_page_config(page_title="Chest Cancer Prediction", layout="centered")
 
-st.title("🩺 Lung Cancer Detection")
+st.title("🩺 Chest Cancer Detection")
 st.write("Upload a chest X-ray image to predict the type of lung cancer.")
 
 # File uploader
