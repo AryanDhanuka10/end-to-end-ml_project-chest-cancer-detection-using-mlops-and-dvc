@@ -53,8 +53,8 @@ class ConfigurationManager:
         prepare_base_model = self.config.prepare_base_model
         params = self.params
 
-        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Chest-CT-Scan-data/train")
-        validation_data = os.path.join(self.config.data_ingestion.unzip_dir, "Chest-CT-Scan-data/valid")  # Fixed validation path
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Data/train")
+        validation_data = os.path.join(self.config.data_ingestion.unzip_dir, "Data/valid")  # Fixed validation path
 
         create_directories([Path(training.root_dir)])
 
@@ -75,7 +75,7 @@ class ConfigurationManager:
     def get_evaluated_config(self) -> EvaluationConfig:
             eval_config = EvaluationConfig(
                 path_of_model="/home/aryan-dhanuka/Backup/Python Data Science/AI Projects/End-To-End-ML_Project-Chest-Cancer-Detection-Using-MLOps-and-DVC/artifacts/training/model.h5",
-                training_data="/home/aryan-dhanuka/Backup/Python Data Science/AI Projects/End-To-End-ML_Project-Chest-Cancer-Detection-Using-MLOps-and-DVC/artifacts/data_ingestion/Chest-CT-Scan-data/train",
+                training_data="/home/aryan-dhanuka/Backup/Python Data Science/AI Projects/End-To-End-ML_Project-Chest-Cancer-Detection-Using-MLOps-and-DVC/artifacts/data_ingestion/Data/train",
                 mlflow_url="https://dagshub.com/AryanDhanuka10/End-To-End-ML_Project-Chest-Cancer-Detection-Using-MLOps-and-DVC.mlflow/#/experiments/0?searchFilter=&orderByKey=attributes.start_time&orderByAsc=false&startTime=ALL&lifecycleFilter=Active&modelVersionFilter=All+Runs&datasetsFilter=W10%3D",
                 all_params=self.params,
                 params_image_size=self.params.IMAGE_SIZE,
