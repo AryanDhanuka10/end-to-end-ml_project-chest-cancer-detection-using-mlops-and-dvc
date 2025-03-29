@@ -37,7 +37,7 @@ def predict_image(img):
 st.set_page_config(page_title="Chest Cancer Prediction", layout="centered")
 
 st.title("🩺 Chest Cancer Detection")
-st.write("Upload a chest X-ray image to predict the type of lung cancer.")
+st.write("Upload a chest X-ray image to predict the type of Chest cancer.")
 
 # File uploader
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
