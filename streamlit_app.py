@@ -49,10 +49,24 @@ def predict_image(image):
     """Predicts the class of the given image using the model."""
     img_array = preprocess_image(image)
     predictions = model.predict(img_array)
-    class_names = ["Normal", "Cancer"]  # Change according to your classes
-    predicted_class = class_names[np.argmax(predictions)]
+
+    st.write(f"🔍 Raw Predictions: {predictions}")  # Debugging Output
+
+    if predictions.shape[1] != 2:  # Ensure correct shape
+        st.error(f"❌ Unexpected prediction shape: {predictions.shape}")
+        return "Error", 0.0
+
+    class_names = ["Normal", "Cancer"]  # Adjust based on your model
+    predicted_index = np.argmax(predictions)
+
+    if predicted_index >= len(class_names):
+        st.error("❌ Prediction index out of range!")
+        return "Error", 0.0
+
+    predicted_class = class_names[predicted_index]
     confidence = np.max(predictions) * 100
     return predicted_class, confidence
+
 
 # Streamlit UI
 st.title("🩺 Chest Cancer Detection using Deep Learning")
