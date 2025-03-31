@@ -1,138 +1,93 @@
-🚀 End-to-End Chest Cancer Detection using MLOps & DVC
-🌟 An AI-powered solution for early chest cancer detection using Deep Learning and MLOps.
-📌 Integrated with DVC for dataset versioning & automated CI/CD workflows.
-🔬 Deployed via Streamlit & FastAPI for real-time predictions.
+# 🏥 Chest Cancer Detection using MLOps & DVC
 
-🏥 Project Overview
-Chest cancer detection from medical images is a crucial application of AI in healthcare. This project follows a complete Machine Learning (ML) Lifecycle using MLOps principles and Data Version Control (DVC) to ensure:
+![GitHub stars](https://img.shields.io/github/stars/AryanDhanuka10/end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc?style=social)
+![GitHub forks](https://img.shields.io/github/forks/AryanDhanuka10/end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc?style=social)
+![GitHub license](https://img.shields.io/github/license/AryanDhanuka10/end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc)
 
-✅ Scalability - Efficient dataset management with DVC.
-✅ Reproducibility - Automated pipelines for training & deployment.
-✅ Automation - Continuous Integration (CI) & Deployment (CD) via GitHub Actions.
-✅ Real-Time Predictions - Deployable via Streamlit & FastAPI web apps.
+## 📌 Project Overview
+This is an **End-to-End Machine Learning project** for **Chest Cancer Detection** using **MLOps and DVC (Data Version Control)**. The model predicts whether a given chest X-ray falls into one of the four categories:
 
-🖥 Live Demo: Chest Cancer Detection App
+- **Normal**
+- **Adenocarcinoma (Left Lower Lobe, T2 N0 M0 I B)**
+- **Large Cell Carcinoma (Left Hilum, T2 N2 M0 IIIA)**
+- **Squamous Cell Carcinoma (Left Hilum, T1 N2 M0 IIIA)**
 
-📂 Project Structure
-bash
-Copy
-Edit
-📦 end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc
-│-- .dvc/               # DVC configuration for dataset & model versioning
-│-- .github/workflows/   # CI/CD automation with GitHub Actions
-│-- config/             # Configuration files for training & inference
-│-- research/           # Jupyter notebooks for exploratory data analysis
-│-- src/cnnClassifier/  # CNN architecture & ML pipeline scripts
-│-- templates/          # HTML templates for the web app interface
-│-- app.py              # Flask-based web API
-│-- streamlit_app.py    # Streamlit app for user-friendly predictions
-│-- FastAPI_app.py      # FastAPI backend for RESTful predictions
-│-- requirements.txt    # Dependencies for setting up the project
-🛠️ Installation & Setup
-1️⃣ Clone the Repository
-bash
-Copy
-Edit
+🚀 **Live Demo:** [Streamlit App](https://end-to-end-mlproject-chest-cancer-detection-using-mlops-and-dv.streamlit.app/)
+
+## 📂 Project Structure
+```
+📁 end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc
+│── 📂 dvc/                      # DVC configuration for dataset & model versioning
+│── 📂 .github/workflows/        # CI/CD automation using GitHub Actions
+│── 📂 config/                   # Configuration files for training & inference
+│── 📂 research/                 # Jupyter notebooks for exploratory data analysis
+│── 📂 src/cnnClassifier/        # CNN architecture & ML pipeline scripts
+│── 📂 templates/                # HTML templates for web app UI
+│── 📄 app.py                    # Flask-based web API
+│── 📄 streamlit_app.py          # Streamlit app for predictions
+│── 📄 FastAPI_app.py            # FastAPI backend for RESTful predictions
+│── 📄 requirements.txt          # Dependencies for setting up the project
+```
+
+## ⚙️ Installation & Setup
+Follow these steps to set up and run the project:
+
+### 1️⃣ Clone the Repository
+```bash
 git clone https://github.com/AryanDhanuka10/end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc.git
 cd end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc
-2️⃣ Create a Virtual Environment
-bash
-Copy
-Edit
+```
+
+### 2️⃣ Create a Virtual Environment
+```bash
 python3 -m venv chest
 source chest/bin/activate  # For Windows use: chest\Scripts\activate
-3️⃣ Install Dependencies
-bash
-Copy
-Edit
+```
+
+### 3️⃣ Install Dependencies
+```bash
 pip install -r requirements.txt
-4️⃣ Install DVC & Fetch Data
-bash
-Copy
-Edit
+```
+
+### 4️⃣ Install DVC & Fetch Data
+```bash
 pip install dvc
 dvc pull  # Pull dataset & model files
-🎯 Model Training & Evaluation
-🔵 Configure Training Parameters
-Modify the config/config.yaml file with the dataset path and hyperparameters.
+```
 
-🔵 Start Training
-bash
-Copy
-Edit
-python src/cnnClassifier/train.py
-The model will be trained and saved for deployment.
+### 5️⃣ Model Training & Evaluation
+Modify the `config/config.yaml` file with dataset paths and hyperparameters.
+```bash
+python src/cnnClassifier/train.py  # Train the CNN Model
+```
 
-🔵 Evaluate Performance
-bash
-Copy
-Edit
-python src/cnnClassifier/evaluate.py
-This will generate accuracy, loss curves, and confusion matrices.
-
-🚀 Deployment Options
-🟢 1. Streamlit Web App
-Run the Streamlit app for an interactive user interface:
-
-bash
-Copy
-Edit
+### 6️⃣ Run Streamlit Web App
+```bash
 streamlit run streamlit_app.py
-📌 Features:
-✔ Upload X-ray images
-✔ Get real-time predictions
-✔ Confidence score displayed
+```
 
-🖥 Live Demo: Chest Cancer Detection App
+## 🚀 Technologies Used
+- **Deep Learning:** CNN (Convolutional Neural Networks)
+- **MLOps:** DVC (Data Version Control)
+- **Web Frameworks:** Flask, FastAPI, Streamlit
+- **CI/CD:** GitHub Actions
+- **Version Control:** Git & DVC
 
-🔵 2. FastAPI REST API
-Run the FastAPI-based backend for model inference:
+## 📊 Model Performance
+| Model                  | Accuracy |
+|------------------------|----------|
+| CNN                    | 63.25%   |
+| Logistic Regression    | 72.14%   |
+| Random Forest          | TBD      |
 
-bash
-Copy
-Edit
-uvicorn FastAPI_app:app --reload
-📌 Access API Docs: http://127.0.0.1:8000/docs
-✔ Upload images as JSON payload
-✔ Get predictions via RESTful API
+## 🔗 Useful Links
+- **GitHub Repository:** [GitHub](https://github.com/AryanDhanuka10/end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc)
+- **Live Web App:** [Streamlit App](https://end-to-end-mlproject-chest-cancer-detection-using-mlops-and-dv.streamlit.app/)
+- **Author:** [Aryan Dhanuka](https://www.linkedin.com/in/aryan-dhanuka-07b338292/)
 
-🔥 MLOps & DVC Integration
-🚀 MLOps Workflows:
+## 📜 License
+This project is licensed under the **MIT License**.
 
-✅ GitHub Actions: Automates testing, training, and deployment.
+---
+🌟 **If you found this project helpful, give it a star ⭐ on GitHub!**
 
-✅ DVC (Data Version Control): Keeps track of datasets & models.
-
-✅ Pipeline Orchestration: Ensures smooth training-to-deployment transition.
-
-💡 Why DVC?
-
-Reproducibility: Always use the correct dataset version.
-
-Collaboration: Work seamlessly across multiple systems.
-
-Efficiency: Fetch only required data, saving storage & bandwidth.
-
-bash
-Copy
-Edit
-# Track dataset
-dvc add data/dataset
-git commit -m "Tracked dataset using DVC"
-git push origin main
-
-# Pull dataset in a new environment
-dvc pull
-🤝 Contributing
-💡 Contributions, issues, and feature requests are welcome!
-Feel free to check the issues page.
-
-📜 License
-This project is licensed under the MIT License.
-
-📬 Contact
-📌 Author: Aryan Dhanuka
-📌 GitHub: @AryanDhanuka10
-📌 LinkedIn: Aryan Dhanuka
-
-This final version is polished, visually appealing, and highlights your MLOps pipeline, deployment details, and project structure effectively. 🚀
