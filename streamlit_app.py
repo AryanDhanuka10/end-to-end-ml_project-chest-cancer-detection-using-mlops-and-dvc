@@ -52,20 +52,23 @@ def predict_image(image):
 
     st.write(f"🔍 Raw Predictions: {predictions}")  # Debugging Output
 
-    if predictions.shape[1] != 2:  # Ensure correct shape
+    if predictions.shape[1] != 4:  # Ensure correct shape
         st.error(f"❌ Unexpected prediction shape: {predictions.shape}")
         return "Error", 0.0
 
-    class_names = ["Normal", "Cancer"]  # Adjust based on your model
+    class_names = [
+        "Normal",
+        "Adenocarcinoma",
+        "Large Cell Carcinoma",
+        "Squamous Cell Carcinoma"
+    ]
+
     predicted_index = np.argmax(predictions)
-
-    if predicted_index >= len(class_names):
-        st.error("❌ Prediction index out of range!")
-        return "Error", 0.0
-
     predicted_class = class_names[predicted_index]
     confidence = np.max(predictions) * 100
+
     return predicted_class, confidence
+
 
 
 # Streamlit UI
