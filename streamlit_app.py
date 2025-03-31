@@ -29,11 +29,22 @@ CLASS_LABELS = [
 ]
 
 # Function to predict image
+
+
 def predict_image(img):
+    # Convert image to RGB (remove alpha channel)
+    img = img.convert("RGB")  # Ensure 3 channels (RGB)
+    
     img = img.resize((224, 224))  # Resize image to match model input
     img = image.img_to_array(img)
     img = np.expand_dims(img, axis=0)  # Expand dimensions to match model input
     img = img / 255.0  # Normalize
+    
+    predictions = model.predict(img)
+    result = np.argmax(predictions, axis=1)[0]  # Get class with highest probability
+    
+    return CLASS_LABELS[result]
+
     
     predictions = model.predict(img)
     result = np.argmax(predictions, axis=1)[0]  # Get class with highest probability
