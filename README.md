@@ -123,18 +123,6 @@ git push origin main
 
 # Pull dataset in a new environment
 dvc pull
-💡 Results & Performance
-📌 The model has been trained on chest X-ray images to classify:
-
-Normal
-
-Adenocarcinoma (Left Lower Lobe - Stage Ib)
-
-Large Cell Carcinoma (Left Hilum - Stage IIIa)
-
-Squamous Cell Carcinoma (Left Hilum - Stage IIIa)
-
-
 🤝 Contributing
 💡 Contributions, issues, and feature requests are welcome!
 Feel free to check the issues page.
@@ -145,12 +133,6 @@ This project is licensed under the MIT License.
 📬 Contact
 📌 Author: Aryan Dhanuka
 📌 GitHub: @AryanDhanuka10
-📌 LinkedIn: [[Your LinkedIn Here](https://www.linkedin.com/in/aryan-dhanuka-07b338292/)]
+📌 LinkedIn: Aryan Dhanuka
 
-This README is now clean, professional, and visually appealing. It highlights your MLOps pipeline, deployment details, and results effectively. 🚀
-
-
-
-
-
-
+This final version is polished, visually appealing, and highlights your MLOps pipeline, deployment details, and project structure effectively. 🚀
