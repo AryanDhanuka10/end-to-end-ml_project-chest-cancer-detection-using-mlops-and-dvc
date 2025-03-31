@@ -1,11 +1,23 @@
+import os
 import streamlit as st
+import subprocess
 import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
-import os
+from PIL import Image
 
-# Load the trained model
-MODEL_PATH = os.path.join("artifacts", "training", "model.h5")
+# Ensure the model is available (Git LFS workaround)
+MODEL_PATH = "artifacts/training/model.h5"
+
+if not os.path.exists(MODEL_PATH):
+    st.info("Fetching model from Git LFS...")
+    subprocess.run(["git", "lfs", "pull"], check=True)  # Pull model from LFS
+    if os.path.exists(MODEL_PATH):
+        st.success("Model successfully downloaded!")
+    else:
+        st.error("Failed to fetch model. Check if it's correctly pushed to Git LFS.")
+
+# Load the model
 model = load_model(MODEL_PATH)
 
 # Define class labels
@@ -24,12 +36,7 @@ def predict_image(img):
     img = img / 255.0  # Normalize
     
     predictions = model.predict(img)
-    
-    # If model outputs probabilities (sigmoid)
-    if predictions.shape[1] == 1:
-        result = int(predictions[0][0] > 0.5)
-    else:
-        result = np.argmax(predictions, axis=1)[0]
+    result = np.argmax(predictions, axis=1)[0]  # Get class with highest probability
     
     return CLASS_LABELS[result]
 
@@ -47,7 +54,7 @@ if uploaded_file is not None:
     st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
     
     # Load image
-    img = image.load_img(uploaded_file, target_size=(224, 224))
+    img = Image.open(uploaded_file)
 
     # Predict button
     if st.button("Predict"):
