@@ -6,33 +6,28 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 from PIL import Image
+import gdown
 
-# Model file path
-MODEL_PATH = "artifacts/training/model.h5"
-MODEL_URL = "https://github.com/AryanDhanuka10/end-to-end-ml_project-chest-cancer-detection-using-mlops-and-dvc/releases/latest/download/model.h5"
+# Google Drive file ID of your model
+MODEL_ID = "1RbEsf1ZDAOkyIDATLoBuXiDID_jZWk6T"
+MODEL_PATH = "model.h5"  # Change if the model has a different name
 
-# Function to download model if missing
 def download_model():
-    """Download the model file if it's missing."""
     if not os.path.exists(MODEL_PATH):
-        st.warning("🔄 Model not found. Downloading from GitHub...")
-        os.makedirs(os.path.dirname(MODEL_PATH), exist_ok=True)
-        
-        response = requests.get(MODEL_URL, stream=True)
-        if response.status_code == 200:
-            with open(MODEL_PATH, "wb") as f:
-                for chunk in response.iter_content(chunk_size=1024):
-                    f.write(chunk)
-            st.success("✅ Model downloaded successfully!")
-        else:
-            st.error(f"❌ Failed to download model: {response.status_code}")
-            return False
-    return True
+        st.write("📥 Downloading model from Google Drive...")
+        gdown.download(f"https://drive.google.com/uc?id={MODEL_ID}", MODEL_PATH, quiet=False)
+        st.write("✅ Model downloaded successfully!")
 
-# Ensure the model is available
-if download_model():
+# Download model if not available
+download_model()
+
+# Load the model
+st.write("🔄 Loading model...")
+try:
     model = load_model(MODEL_PATH)
-    st.success("✅ Model loaded successfully!")
+    st.write("✅ Model loaded successfully!")
+except Exception as e:
+    st.error(f"❌ Failed to load model: {e}")
 
 # Function to preprocess the image
 def preprocess_image(image):
